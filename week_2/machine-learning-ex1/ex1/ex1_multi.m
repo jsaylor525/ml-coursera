@@ -106,6 +106,8 @@ fprintf('\n');
 % not need to be normalized.
 price = 0; % You should change this
 
+normalized_features = (([1650, 3] - mu) ./ sigma);
+price = [1, normalized_features]  * theta; 
 
 % ============================================================
 

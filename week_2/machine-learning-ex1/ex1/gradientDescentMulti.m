@@ -18,14 +18,16 @@ for iter = 1:num_iters
     %
 
 
+    % Compute the hypothesis for this theta pair
+    hypothesis = theta' * X';
 
+    % Update theta with gradient descent step for all j at the same time
+    % Using as many vectorizations as possible.
+    for j = 1:length(theta)    
+        theta(j) = theta(j) - (alpha / m) * sum((hypothesis' - y) .* X(:,j));
+    end
 
-
-
-
-
-
-
+    
 
     % ============================================================
 

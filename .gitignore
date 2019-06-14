@@ -1,3 +1,7 @@
 *.zip
 myPlot.png
 ex1.pdf
+*.mat
+*.pdf
+lib
+octave-workspace

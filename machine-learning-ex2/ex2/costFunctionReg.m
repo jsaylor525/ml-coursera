@@ -17,9 +17,16 @@ grad = zeros(size(theta));
 %               Compute the partial derivatives and set grad to the partial
 %               derivatives of the cost w.r.t. each parameter in theta
 
+alpha = 1;
 
+% Hypothesis Representation Vectorized
+h_theta = sigmoid(X * theta);
 
+% Simplified Cost Function
+J = (alpha / m) * sum( (-y .* log(h_theta)) - ((1 - y) .* (log(1 - h_theta))) ) + ((lambda / (2 * m)) * sum(theta.^2));
 
+% Simplified gradient descent (partial derivative of J with repect to theta)
+grad = grad - ((alpha / m) * (X' * (h_theta - y)) + ((lambda / m) * grad));
 
 
 % =============================================================

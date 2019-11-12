@@ -26,10 +26,10 @@ alpha = 1;
 h_theta = sigmoid(X * theta);
 
 % Simplified Cost Function
-J = (1 / m) * sum( (-y .* log(h_theta)) - ((1 - y) .* (log(1 - h_theta))) );
+J = (alpha / m) * sum( (-y .* log(h_theta)) - ((1 - y) .* (log(1 - h_theta))) );
 
-% Simplified gradient descent
-grad = grad - (alpha / m) * X' * (sigmoid(X * theta) - y);
+% Simplified gradient descent (partial derivative of J with repect to theta)
+grad = grad - ((alpha / m) * X' * (h_theta - y));
 
 % =============================================================
 

@@ -15,11 +15,11 @@ p = zeros(m, 1);
 %               You should set p to a vector of 0's and 1's
 %
 
+threshold = 0.5;
 
+h_theta = sigmoid(X * theta);
 
-
-
-
+p = h_theta >= threshold;
 
 % =========================================================================
 

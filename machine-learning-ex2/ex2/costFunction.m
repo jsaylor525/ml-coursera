@@ -20,14 +20,16 @@ grad = zeros(size(theta));
 % Note: grad should have the same dimensions as theta
 %
 
-theta_T = theta';
-hypo_theta = sigmoid(theta_T .* X);
+alpha = 1;
 
-J = (1 / m) * sum( (-y .* log(hypo_theta)) - ((1 - y)) .* (log(1 - hypo_theta)) );
+% Hypothesis Representation Vectorized
+h_theta = sigmoid(X * theta);
 
-for j = 1:length(grad),
-    grad(j) = (1 / m) .* sum((hypo_theta - y) * X(j));
-end
+% Simplified Cost Function
+J = (1 / m) * sum( (-y .* log(h_theta)) - ((1 - y) .* (log(1 - h_theta))) );
+
+% Simplified gradient descent
+grad = grad - (alpha / m) * X' * (sigmoid(X * theta) - y);
 
 % =============================================================
 
